@@ -5,6 +5,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../sjlm-pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/../sjlm-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/../sjlm-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../sjlm-api/pom.xml" />
       </list>
     </option>
   </component>
