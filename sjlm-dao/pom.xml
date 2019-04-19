@@ -6,6 +6,7 @@
         <groupId>cn.sjlm</groupId>
         <artifactId>sjlm-parent</artifactId>
         <version>0.0.1</version>
+        <relativePath>../sjlm-parent</relativePath>
     </parent>
     <groupId>cn.sjlm</groupId>
     <artifactId>sjlm-dao</artifactId>
@@ -30,6 +31,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

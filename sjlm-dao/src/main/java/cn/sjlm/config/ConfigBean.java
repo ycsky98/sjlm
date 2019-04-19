@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -61,8 +63,7 @@ public class ConfigBean {
     private String scannerMapperPath;
 
     @Bean
-    @Primary//在同样的DataSource中，首先使用被标注的DataSource,覆盖其余数据源优先选择
-    public DruidDataSource dataSource(){
+    public DataSource dataSource(){
         DruidDataSource source = new DruidDataSource();
         try {
             source.setDriverClassName(this.driver);
@@ -91,7 +92,6 @@ public class ConfigBean {
      * 配置sqlSessionFactoryBean
      * */
     @Bean
-    @Primary
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource)
             throws Exception{
         final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -99,5 +99,23 @@ public class ConfigBean {
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources("classpath:" + this.scannerMapperPath));
         return sqlSessionFactoryBean.getObject();
+    }
+
+    @Bean
+    public MapperScannerConfigurer createSingleMapperScannerConfigurer() {
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("cn.sjlm.sjlmdao.**");
+        return mapperScannerConfigurer;
+    }
+
+    /**
+     * 配置dataSource事务
+     * */
+    @Bean
+    @Primary
+    public DataSourceTransactionManager txManager(@Qualifier("dataSource") DataSource dataSource){
+        DataSourceTransactionManager manager = new DataSourceTransactionManager();
+        manager.setDataSource(dataSource);
+        return  manager;
     }
 }

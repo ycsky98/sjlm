@@ -6,6 +6,7 @@
         <groupId>cn.sjlm</groupId>
         <artifactId>sjlm-parent</artifactId>
         <version>0.0.1</version>
+        <relativePath>../sjlm-parent</relativePath>
     </parent>
     <groupId>cn.sjlm</groupId>
     <artifactId>sjlm-api</artifactId>
