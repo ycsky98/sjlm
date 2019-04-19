@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"cn.sjlm.sjlmapi","cn.sjlm.sjlmdao","cn.sjlm.config","cn.sjlm.sjlmpojo","cn.sjlm.sjlmservice"})
+@ComponentScan(basePackages = {"cn.sjlm.**"})
 @MapperScan(basePackages = {"cn.sjlm.sjlmdao.**"})
 public class SjlmApiApplication {
 
