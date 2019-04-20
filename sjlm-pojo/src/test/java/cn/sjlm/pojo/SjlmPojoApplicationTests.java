@@ -1,4 +1,4 @@
-package cn.sjlm.sjlmservice;
+package cn.sjlm.pojo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SjlmServiceApplicationTests {
+public class SjlmPojoApplicationTests {
 
     @Test
     public void contextLoads() {
